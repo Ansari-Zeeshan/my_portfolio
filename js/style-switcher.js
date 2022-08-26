@@ -13,4 +13,35 @@ window.addEventListener('scroll',()=>{
   }
 })
 
-//theme 
+//theme colors
+const alterStyle = document.querySelectorAll('.alternate-style');
+
+function setActiveStyle(color){
+  alterStyle.forEach((style)=>{
+    if(color === style.getAttribute('title')){
+      style.removeAttribute('disabled');
+    }
+    else{
+      style.setAttribute('disabled','true');
+    }
+  })
+}
+
+// theme light and dark mode
+const dayNight = document.querySelector('.day-night'),
+  iElem = dayNight.querySelector('i');
+
+  dayNight.addEventListener('click', ()=>{
+    iElem.classList.toggle('fa-sun');
+    iElem.classList.toggle('fa-moon');
+    document.body.classList.toggle('dark');
+  })
+
+window.addEventListener('load',()=>{
+  if(document.body.classList.contains('dark')){
+    iElem.classList.add('fa-sun');
+  }
+  else{
+    iElem.classList.add('fa-moon');
+  }
+})
